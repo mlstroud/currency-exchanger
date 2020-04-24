@@ -53,4 +53,14 @@ export function displayCurrencyCodes() {
   };
 
   let output = "";
+
+  for (let key in currency) {
+    output +=
+      `<tr>` +
+      `<td>${key}</td>` +
+      `<td>${currency[key]}</td>` +
+      `</tr>`;
+  }
+
+  return output;
 }
