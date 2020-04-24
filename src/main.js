@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
-import { CurrencyExchange } from './../src/exchange.js';
+import { CurrencyExchange, convertCurrency, storeCurrencyData } from './../src/exchange.js';
 import { displayCurrencyCodes, displayResults } from './../src/userinterface.js';
 
 $(document).ready(function () {
@@ -28,28 +28,6 @@ $(document).ready(function () {
     } else {
       result = convertCurrency(currencyAmount, currencyTo, sessionStorage);
       displayResults(result, currencyAmount, currencyFrom, currencyTo);
-    }
-
-
-
-    function storeCurrencyData(response) {
-      for (let key in response.conversion_rates) {
-        sessionStorage.setItem(key, response.conversion_rates[key]);
-      }
-    }
-
-    function convertCurrency(currencyAmount, currencyTo, response) {
-      if (response) {
-        let result = 0;
-
-        for (let key in sessionStorage) {
-          if (key === currencyTo) {
-            result = (currencyAmount * sessionStorage[key]).toFixed(2);
-            break;
-          }
-        }
-        return result;
-      }
     }
   });
 });

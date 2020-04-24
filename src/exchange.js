@@ -23,3 +23,17 @@ export function storeCurrencyData(response) {
     sessionStorage.setItem(key, response.conversion_rates[key]);
   }
 }
+
+export function convertCurrency(currencyAmount, currencyTo, response) {
+  if (response) {
+    let result = 0;
+
+    for (let key in response) {
+      if (key === currencyTo) {
+        result = (currencyAmount * response[key]).toFixed(2);
+        break;
+      }
+    }
+    return result;
+  }
+}
