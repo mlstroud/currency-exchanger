@@ -18,6 +18,15 @@ _Users input a currency in USD and will receive a converted amount in other curr
 * Bootstrap
 
 ## Specs
+| Behavior                                                                                        | Input    | Output                                                 |
+|:------------------------------------------------------------------------------------------------|:---------|-------------------------------------------------------:|
+| Program should accept numeric input from user.                                                  | 250      | N/A                                                    |
+| Program should accept currency to convert USD to.                                               | EUR      | N/A                                                    |
+| Program should make an API call for USD exchange rates.                                         | 250, EUR | { .... EUR .... }                                      |
+| Program should display notification with error info if API call did not return 200 OK status.   | API Call | 404 Not Found                                          |
+| Program should parse returned JSON object and extract relevant currency.                        | 250, EUR | EUR: 0.9268 (4/24/20)                                  |
+| Program should display a notification if the API call did not return the queried exchange rate. | 250, ABC | Sorry, we could not retrieve an exchange rate for ABC. |
+
 
 ## Stretch Goals
 
