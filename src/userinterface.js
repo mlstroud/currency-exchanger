@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export function displayCurrencyCodes() {
+export function loadCurrencyCodes() {
   const currency = {
     "AED": "UAE Dirham",
     "ARS": "Argentine Peso",
@@ -54,22 +54,18 @@ export function displayCurrencyCodes() {
     "ZAR": "South Afrian Rand"
   };
 
-  let output = "";
-
   for (let key in currency) {
-    output +=
+
+    $("#currencyFrom").append(`<option>${key}</option>`);
+    $("#currencyTo").append(`<option>${key}</option>`);
+
+    $("#currency-codes").append(
       `<tr>` +
       `<td>${key}</td>` +
       `<td>${currency[key]}</td>` +
-      `</tr>`;
+      `</tr>`
+    );
   }
-
-  for (let key in currency) {
-    $("#currencyFrom").append(`<option>${key}</option>`);
-    $("#currencyTo").append(`<option>${key}</option>`);
-  }
-
-  return output;
 }
 
 export function displayResults(result, currencyAmount, currencyFrom, currencyTo) {
@@ -83,7 +79,6 @@ export function displayResults(result, currencyAmount, currencyFrom, currencyTo)
 
       $("#error").hide();
       $("#results").slideDown();
-      console.log(result);
     } else {
       throw new Error("The currency you requested did not exist in our records.");
     }
@@ -93,7 +88,6 @@ export function displayResults(result, currencyAmount, currencyFrom, currencyTo)
 }
 
 export function displayError(error) {
-
   document.getElementById("error").innerHTML =
     `<p>Sorry, there was an error with your request.</p>` +
     `<table class='table' id="error">` +
