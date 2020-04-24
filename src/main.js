@@ -7,7 +7,7 @@ import { CurrencyExchange } from './../src/exchange.js';
 
 $(document).ready(function () {
 
-  //$("#currency-codes").append(displayCurrencyCodes());
+  $("#currency-codes").append(displayCurrencyCodes());
 
   $("#exchange").click(function () {
     (async () => {
