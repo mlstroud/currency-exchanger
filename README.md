@@ -31,7 +31,7 @@ _Users input a currency in USD and will receive a converted amount in other curr
 ## Stretch Goals
 * **Completed |** Allow users to convert from any currency(instead of USD only) to any currency(including USD). 
 * **Completed |** Cache returned JSON data in session storage.
-* **In Progress |** Create dynamicly generated currency dropdown menus to choose.
+* **Completed |** Create dynamicly generated currency dropdown menus to choose.
 
 ## Known Bugs
 * None currently known.
