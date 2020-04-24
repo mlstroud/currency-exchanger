@@ -3,29 +3,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
 import { CurrencyExchange } from './../src/exchange.js';
-//import { displayCurrencyCodes } from './../src/userinterface.js';
+import { displayCurrencyCodes } from './../src/userinterface.js';
 
 $(document).ready(function () {
 
   $("#currency-codes").append(displayCurrencyCodes());
 
   $("#exchange").click(function () {
+
     (async () => {
+      const currencyFrom = $("#currencyFrom").val();
+      const currencyTo = $("#currencyTo").val();
+      const currencyAmount = parseInt($("#currencyAmount").val());
       let currencyExchange = new CurrencyExchange();
-      const response = await currencyExchange.getExchangeRates("USD");
-      displayResults(response);
+      const response = await currencyExchange.getExchangeRates(currencyFrom);
+      let result = convertCurrency(currencyAmount, currencyTo, response);
+
+      $("#results").html(`${currencyFrom} to ${currencyTo}<br>` +
+        `${currencyAmount} = ${result}`
+      );
     })();
 
-    function displayResults(response) {
+
+
+
+    function convertCurrency(currencyAmount, currencyTo, response) {
+
       if (response) {
-        const convertTo = $("#currencyTo").val();
+        let result = 0;
 
         for (let key in response.conversion_rates) {
-          if (key === convertTo) {
-            $("#results").append(`Converted to ${key}: ${response.conversion_rates[key]}`)
+          if (key === currencyTo) {
+            result = (currencyAmount * response.conversion_rates[key]).toFixed(2);
+            break;
           }
-          //$("#results").append(`${key} - ${response.conversion_rates[key]}<br>`);
         }
+
+        return result;
       }
     }
   });
