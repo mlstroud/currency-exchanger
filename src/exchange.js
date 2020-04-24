@@ -3,6 +3,7 @@ export class CurrencyExchange {
     try {
       let response = await fetch(`https://prime.exchangerate-api.com/v5/${process.env.API_KEY}/latest/${currency}`);
       let jsonResponse;
+
       if (response.ok && response.status == 200) {
         jsonResponse = await response.json();
       } else {
@@ -10,6 +11,7 @@ export class CurrencyExchange {
       }
       return jsonResponse;
     } catch (error) {
+      console.log(error.message);
       //alert(error.message);
     }
   }
