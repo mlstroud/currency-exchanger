@@ -1,0 +1,37 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+label {
+  font-weight: bold;
+}
+
+.jumbotron {
+  text-align: center;
+  background: #FFFFFF;
+  color: skyblue;
+}
+
+.form-control {
+  margin: 5px;
+  width: 50%;
+}
+
+.btn {
+  margin: 5px;
+}
+
+#error {
+  margin: 5px;
+  color: red;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+#results {
+  margin: 5px;
+  display: none;
+}
