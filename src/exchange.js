@@ -17,3 +17,9 @@ export class CurrencyExchange {
     }
   }
 }
+
+export function storeCurrencyData(response) {
+  for (let key in response.conversion_rates) {
+    sessionStorage.setItem(key, response.conversion_rates[key]);
+  }
+}
