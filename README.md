@@ -29,6 +29,7 @@ _Users input a currency in USD and will receive a converted amount in other curr
 
 
 ## Stretch Goals
+* Allow users to convert from any currency(instead of USD only) to any currency(including USD). 
 
 ## Known Bugs
 * None currently known.
