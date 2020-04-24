@@ -29,5 +29,7 @@ $(document).ready(function () {
       result = convertCurrency(currencyAmount, currencyTo, sessionStorage);
       displayResults(result, currencyAmount, currencyFrom, currencyTo);
     }
+
+    console.log(sessionStorage["currencyFrom"]);
   });
 });
