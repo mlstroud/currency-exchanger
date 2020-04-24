@@ -4,18 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchanger</title>
 </head>
 
 <body>
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Test</h1>
+      <h1>Epicurrency Exchanger</h1>
     </div>
 
-    <button id="exchange" class="btn btn-info">Exchange</button>
-    <div id="results">
-
+    <div class="row">
+      <div class="col-md-8">
+        <form id="exchange-form">
+          <label for="currencyAmount">Enter Amount:</label>
+          <input type="number" class="form-control" id="currencyAmount">
+          <label for="currencyFrom">Convert From:</label>
+          <input type="text" class="form-control" id="currencyFrom">
+          <label for="currencyTo">Convert To:</label>
+          <input type="text" class="form-control" id="currencyTo">
+          <button id="exchange" class="btn btn-info">Exchange</button>
+        </form>
+        <div id="results">
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
     </div>
   </div>
 
