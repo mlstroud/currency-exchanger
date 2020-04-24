@@ -7,7 +7,7 @@ import { displayCurrencyCodes } from './../src/userinterface.js';
 
 $(document).ready(function () {
 
-  displayCurrencyCodes();
+  $("#currency-codes").append(displayCurrencyCodes());
 
   $("#exchange").click(function () {
     (async () => {
