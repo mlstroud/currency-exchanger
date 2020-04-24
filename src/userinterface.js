@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export function displayCurrencyCodes() {
   const currency = {
     "AED": "UAE Dirham",
@@ -63,4 +65,41 @@ export function displayCurrencyCodes() {
   }
 
   return output;
+}
+
+export function displayResults(result, currencyAmount, currencyFrom, currencyTo) {
+  try {
+    if (result) {
+      $("#result-from-currency").html(currencyFrom);
+      $("#result-to-currency").html(currencyTo);
+      $("#result-from-amount").html(currencyAmount);
+      $("#result-to-amount").html(result);
+
+      $("#error").hide();
+      $("#results").slideDown();
+    } else {
+      throw new Error("The currency you requested did not exist in our records.");
+    }
+  } catch (error) {
+    displayError(error);
+  }
+}
+
+export function displayError(error) {
+
+  document.getElementById("error").innerHTML =
+    `<p>Sorry, there was an error with your request.</p>` +
+    `<table class='table' id="error">` +
+    ` <tr>` +
+    `   <th>Error</th>` +
+    `   <th>Message</th>` +
+    ` </tr>` +
+    ` <tr>` +
+    `   <td>${error.name}</td>` +
+    `   <td>${error.message}</td>` +
+    ` </tr>` +
+    `</table>`;
+
+  $("#results").hide();
+  $("#error").slideDown();
 }
