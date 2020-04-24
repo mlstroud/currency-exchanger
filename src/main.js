@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
 import { CurrencyExchange } from './../src/exchange.js';
-import { displayCurrencyCodes } from './../src/userinterface.js';
+//import { displayCurrencyCodes } from './../src/userinterface.js';
 
 $(document).ready(function () {
 
-  $("#currency-codes").append(displayCurrencyCodes());
+  //$("#currency-codes").append(displayCurrencyCodes());
 
   $("#exchange").click(function () {
     (async () => {
@@ -17,9 +17,15 @@ $(document).ready(function () {
     })();
 
     function displayResults(response) {
-      alert("TEST");
       if (response) {
-        $("#results").html(response.conversion_rates.EUR);
+        const convertTo = $("#currencyTo").val();
+
+        for (let key in response.conversion_rates) {
+          if (key === convertTo) {
+            $("#results").append(`Converted to ${key}: ${response.conversion_rates[key]}`)
+          }
+          //$("#results").append(`${key} - ${response.conversion_rates[key]}<br>`);
+        }
       }
     }
   });
