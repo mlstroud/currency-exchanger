@@ -26,7 +26,7 @@ export function storeCurrencyData(response) {
 
 export function convertCurrency(currencyAmount, currencyTo, response) {
   if (response) {
-    let result = 0;
+    let result;
 
     for (let key in response) {
       if (key === currencyTo) {
