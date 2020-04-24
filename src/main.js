@@ -11,30 +11,40 @@ $(document).ready(function () {
 
   $("#exchange").click(function () {
 
-    (async () => {
-      const currencyFrom = $("#currencyFrom").val();
-      const currencyTo = $("#currencyTo").val();
-      const currencyAmount = parseInt($("#currencyAmount").val());
-      let currencyExchange = new CurrencyExchange();
-      const response = await currencyExchange.getExchangeRates(currencyFrom);
-      let result = convertCurrency(currencyAmount, currencyTo, response);
+    const currencyFrom = $("#currencyFrom").val();
+    const currencyTo = $("#currencyTo").val();
+    const currencyAmount = parseInt($("#currencyAmount").val());
 
-      $("#results").html(`${currencyFrom} to ${currencyTo}<br>` +
-        `${currencyAmount} = ${result}`
-      );
-    })();
+    if (sessionStorage.length === 0) {
+      (async () => {
+        let currencyExchange = new CurrencyExchange();
+        const response = await currencyExchange.getExchangeRates(currencyFrom);
+        storeCurrencyData(response);
+      })();
+    }
+
+    let result = convertCurrency(currencyAmount, currencyTo, sessionStorage);
+
+    $("#results").html(`${currencyFrom} to ${currencyTo}<br>` +
+      `${currencyAmount} = ${result}`
+    );
 
 
 
+    function storeCurrencyData(response) {
+      for (let key in response.conversion_rates) {
+        sessionStorage.setItem(key, response.conversion_rates[key]);
+      }
+    }
 
     function convertCurrency(currencyAmount, currencyTo, response) {
 
       if (response) {
         let result = 0;
 
-        for (let key in response.conversion_rates) {
+        for (let key in sessionStorage) {
           if (key === currencyTo) {
-            result = (currencyAmount * response.conversion_rates[key]).toFixed(2);
+            result = (currencyAmount * sessionStorage[key]).toFixed(2);
             break;
           }
         }
