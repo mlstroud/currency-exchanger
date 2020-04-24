@@ -1,3 +1,5 @@
+import { displayError } from './../src/userinterface.js';
+
 export class CurrencyExchange {
   async getExchangeRates(currency) {
     try {
@@ -11,8 +13,7 @@ export class CurrencyExchange {
       }
       return jsonResponse;
     } catch (error) {
-      console.log(error.message);
-      //alert(error.message);
+      displayError(error);
     }
   }
 }
