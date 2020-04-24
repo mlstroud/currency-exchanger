@@ -8,6 +8,7 @@ export class CurrencyExchange {
       } else {
         jsonResponse = false;
       }
+      return jsonResponse;
     } catch (error) {
       //alert(error.message);
     }
