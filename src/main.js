@@ -3,8 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
 import { CurrencyExchange } from './../src/exchange.js';
+import { displayCurrencyCodes } from './../src/userinterface.js';
 
 $(document).ready(function () {
+
+  displayCurrencyCodes();
 
   $("#exchange").click(function () {
     (async () => {
