@@ -64,6 +64,11 @@ export function displayCurrencyCodes() {
       `</tr>`;
   }
 
+  for (let key in currency) {
+    $("#currencyFrom").append(`<option>${key}</option>`);
+    $("#currencyTo").append(`<option>${key}</option>`);
+  }
+
   return output;
 }
 
@@ -74,9 +79,11 @@ export function displayResults(result, currencyAmount, currencyFrom, currencyTo)
       $("#result-to-currency").html(currencyTo);
       $("#result-from-amount").html(currencyAmount);
       $("#result-to-amount").html(result);
+      $("#result-exchange-rate").html(result);
 
       $("#error").hide();
       $("#results").slideDown();
+      console.log(result);
     } else {
       throw new Error("The currency you requested did not exist in our records.");
     }
